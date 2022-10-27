@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	botdetector "github.com/krakendio/krakend-botdetector/v2/gin"
+	pluginGinJwt "github.com/krakendio/krakend-ce/v2/pkg/jwt-validation/gin"
 	jose "github.com/krakendio/krakend-jose/v2"
 	ginjose "github.com/krakendio/krakend-jose/v2/gin"
 	lua "github.com/krakendio/krakend-lua/v2/router/gin"
@@ -30,6 +31,9 @@ func NewHandlerFactory(logger logging.Logger, metricCollector *metrics.Metrics, 
 	handlerFactory = metricCollector.NewHTTPHandlerFactory(handlerFactory)
 	handlerFactory = opencensus.New(handlerFactory)
 	handlerFactory = botdetector.New(handlerFactory, logger)
+
+	//Plugins apply
+	handlerFactory = pluginGinJwt.HandlerFactory(handlerFactory, logger)
 
 	return func(cfg *config.EndpointConfig, p proxy.Proxy) gin.HandlerFunc {
 		logger.Debug(fmt.Sprintf("[ENDPOINT: %s] Building the http handler", cfg.Endpoint))
