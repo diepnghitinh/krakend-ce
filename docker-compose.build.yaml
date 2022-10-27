@@ -1,0 +1,16 @@
+version: "3.6"
+
+services:
+
+  api-gateway:
+    image: "registry.digitalocean.com/wisere/api-gateway:${TAG:-latest}"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+
+  api-gateway_arm64:
+    image: "registry.digitalocean.com/wisere/api-gateway:${TAG:-latest}"
+    platform: linux/amd64
+    build:
+      context: ./
+      dockerfile: Dockerfile.arm64

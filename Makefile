@@ -76,6 +76,10 @@ docker:
 docker-plugin-builder:
 	docker build --no-cache --pull --build-arg GOLANG_VERSION=${GOLANG_VERSION} --build-arg ALPINE_VERSION=${ALPINE_VERSION} -t devopsfaith/krakend-plugin-builder:${VERSION} -f Dockerfile-plugin-builder .
 
+build_and_push:
+	docker-compose -f docker-compose.build.yaml build --build-arg GOLANG_VERSION=${GOLANG_VERSION} --build-arg ALPINE_VERSION=${ALPINE_VERSION} api-gateway_arm64
+	docker-compose -f docker-compose.build.yaml push api-gateway_arm64
+
 benchmark:
 	@mkdir -p bench_res
 	@touch bench_res/${GIT_COMMIT}.out

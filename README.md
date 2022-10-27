@@ -53,3 +53,9 @@ Or, if you don't have or don't want to install `go`, you can build it using the 
 ```
 make build_on_docker
 ```
+
+Or use docker-compose to build & push
+```
+docker-compose -f docker-compose.build.yaml build --build-arg GOLANG_VERSION=1.19.2 --build-arg ALPINE_VERSION=3.16  api-gateway_arm64
+docker-compose -f docker-compose.build.yaml push --build-arg GOLANG_VERSION=1.19.2 --build-arg ALPINE_VERSION=3.16  api-gateway_arm64
+```
