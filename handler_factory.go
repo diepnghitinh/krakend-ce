@@ -13,8 +13,10 @@ import (
 	"github.com/luraproject/lura/v2/config"
 	"github.com/luraproject/lura/v2/logging"
 	"github.com/luraproject/lura/v2/proxy"
-	router "github.com/luraproject/lura/v2/router/gin"
 	"github.com/luraproject/lura/v2/transport/http/server"
+
+	router "github.com/luraproject/lura/v2/router/gin"
+	//router "github.com/krakendio/krakend-ce/v2/src/lura/v2/router/gin"
 
 	"github.com/gin-gonic/gin"
 )

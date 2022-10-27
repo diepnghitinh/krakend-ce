@@ -1,0 +1,19 @@
+{
+    "$schema": "https://www.krakend.io/schema/v3.json",
+    "version": 3,
+    "port": 8090,
+    "endpoints": [
+        {
+            "endpoint": "/httpbin/*uri",
+            "method": "ANY",
+            "backend": [
+                {
+                    "url_pattern": "/*uri",
+                    "host": [
+                        "https://httpbin.org"
+                    ]
+                }
+            ]
+        }
+    ]
+}
