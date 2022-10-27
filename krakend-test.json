@@ -6,6 +6,15 @@
         {
             "endpoint": "/httpbin/*uri",
             "method": "ANY",
+            "headers_to_pass": ["*"],
+            "querystring_params": ["*"],
+            "extra_config": {
+                "github.com/krakendio/krakend-ce/v2/pkg/jwt-validation/validator": {
+                    "alg": "HS256",
+                    "disable_jwk_security": true,
+                    "secret-key": "Yp9PWxOfPR6UrqJVMthHMf9nTlJBWsVN"
+                }
+            },
             "backend": [
                 {
                     "url_pattern": "/*uri",
